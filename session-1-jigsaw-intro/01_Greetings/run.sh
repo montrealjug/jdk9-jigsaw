@@ -13,7 +13,7 @@ echo
 # The -m parameter (long-form: --module) takes the name of the initial module to resolve, and the name of the main class to execute.
 #
 
-java --module-path mods \
+java --module-path com.greetings/target/classes \
      --module com.greetings/com.greetings.Main
 
 # Run the 'java --help' on the command-line to learn about more about the CLI arguments it can handle.
