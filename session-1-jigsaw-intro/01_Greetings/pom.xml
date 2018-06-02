@@ -64,44 +64,6 @@
                 </plugin>
             </plugins>
         </pluginManagement>
-        <plugins>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>exec-maven-plugin</artifactId>
-                <version>1.6.0</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>exec</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <workingDirectory>${project.basedir}</workingDirectory>
-                    <executable>java</executable> <!-- /Users/mathieu/.jenv/shims/java -->
-                    <arguments>
-                        <argument>--module-path</argument>
-                        <modulepath/>
-                        <argument>--module</argument>
-                        <argument>com.greetings/com.greetings.Main</argument>
-                    </arguments>
-
-
-                    <!--<longModulepath>true</longModulepath>
-                    <commandlineArgs>&#45;&#45;module-path com.greetings/target/classes &#45;&#45;module com.greetings/com.greetings.Main</commandlineArgs>-->
-                    <!--<arguments>
-                        &lt;!&ndash;<argument>-version</argument>&ndash;&gt;
-
-                        &lt;!&ndash;<argument>&#45;&#45;module-path com.greetings/target/classes</argument>&ndash;&gt;
-                        <argument>&#45;&#45;module-path</argument>
-                        <argument>com.greetings/target/classes</argument>
-                        <argument>&#45;&#45;module</argument>
-                        <argument>com.greetings/com.greetings.Main</argument>
-                        &lt;!&ndash;<argument>&#45;&#45;module com.greetings/com.greetings.Main</argument>&ndash;&gt;
-                    </arguments>-->
-                </configuration>
-            </plugin>
-        </plugins>
     </build>
 
 </project>
