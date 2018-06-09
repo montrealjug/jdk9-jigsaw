@@ -14,17 +14,15 @@ Perform the below commands to see the contents of the respective Java classes co
 
     $ cat src/com.greetings/com/greetings/Main.java
 
-**Note:** in case one of the below `.sh` script fails due to the `tree` command, please take a look at [Download and install the `tree` and `wget` command](../../README.md) section in the README.md file and apply the appropriate solution.
+The source code is compiled into the directory `target/com.greetings` with the following commands:
 
-The source code is compiled into the directory `mods/com.greetings` with the following commands:
-
-    $ ./compile.sh
+    $ mvn compile
     
 And we run the example with the following command:
     
-    $ ./run.sh
+    $ mvn -f ./com.greetings/pom.xml exec:exec
     
-Check the contents of both these script files (use the `cat` command or a text editor) to see what they are doing and why - interesting instructions and information in there.
+Check the contents of both these `pom.xml` files (use the `cat` command or a text editor) to see what they are doing and why - interesting configurations and information in there.
 
 ##### Minor confusion alert!
 
