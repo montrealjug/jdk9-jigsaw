@@ -4,15 +4,15 @@ This second example updates the module declaration to declare a dependency on mo
 
 Perform the below commands to see the contents of the respective Java classes contained in the `src` folder:
 
-    $ cat src/main/java/org.astro/module-info.java
+    $ cat org.astro/src/main/java/module-info.java
 
-    $ cat src/main/java/org.astro/org/astro/World.java
+    $ cat org.astro/src/main/java/org/astro/World.java
 
 Module `org.astro` exports the package `org.astro` (see `src/main/java/org.astro/module-info.java` for more details).
 
-    $ cat src/main/java/com.greetings/module-info.java
+    $ cat com.greetings/src/main/java/module-info.java
 
-    $ cat src/main/java/com.greetings/com/greetings/Main.java
+    $ cat com.greetings/src/main/java/com/greetings/Main.java
 
 Module `com.greetings` imports the package `org.astro` (see `src/main/java/com.greetings/module-info.java` for more details).
 
