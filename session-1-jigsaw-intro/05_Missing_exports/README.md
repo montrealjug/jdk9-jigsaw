@@ -2,22 +2,18 @@
 
 In this example we mistakenly omit the `exports` from the `com.astro` module declaration (in `module-info.java`).
 
-    $ cat src/org.astro/module-info.java
+    $ cat org.astro/src/main/java/module-info.java
     
-**Note:** in case one of the below `.sh` script fails due to the `tree` command, please take a look at [Download and install the `tree` and `wget` command](../../README.md) section in the README.md file and apply the appropriate solution.
-    
-Try to compile the modules using the below command:
+The sources are compiled into the folders `org.astro/target/classes/org.astro` and `com.greetings/target/classes/com.greetings` with the following commands:
 
-    $ ./compile.sh
+    $ mvn compile
     
 Compilation fails with the below error:
 
 ```
-    src/com.greetings/com/greetings/Main.java:3: error: package org.astro is not visible
-    import org.astro.World;
-              ^
-      (package org.astro is declared in module org.astro, which does not export it)
-    1 error
+Compilation failure
+[ERROR] /Users/xbouclet/Sources/jdk9-jigsaw/session-1-jigsaw-intro/05_Missing_exports/com.greetings/src/main/java/com/greetings/Main.java:[3,11] package org.astro is not visible
+[ERROR]   (package org.astro is declared in module org.astro, which does not export it)
 ```
     
 Check the contents of this script file (use the `cat` command or a text editor) to see what they are doing and why - interesting instructions and information in there.
