@@ -7,6 +7,10 @@ A modular JAR is a regular JAR file that has a `module-info.class` in its top-le
 The modules are compiled from the sources with the following commands:
 
     $ mvn compile
+    
+Create the directory which will contain the packages with the below command:
+
+    $ mkdir mlib
 
 Now create the packages (jar files) with the below command:
 
