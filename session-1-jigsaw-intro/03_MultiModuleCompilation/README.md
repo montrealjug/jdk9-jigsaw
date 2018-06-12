@@ -4,7 +4,7 @@ In this example modules are compiled at the same time unlike with the previous e
 
 The sources are compiled into the folders `mods/org.astro` and `mods/com.greetings` with the following commands:
 
-    $ mvn conpile
+    $ mvn compile
 
 Inspect both the modules created in the mods folder:
 
