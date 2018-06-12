@@ -2,27 +2,21 @@
 
 In this example modules are compiled at the same time unlike with the previous example where the compilation happens sequentially.
 
-**Note:** in case one of the below `.sh` script fails due to the `tree` command, please take a look at [Download and install the `tree` and `wget` command](../../README.md) section in the README.md file and apply the appropriate solution.
-
-Perform the below commands to see the contents of the respective sources contained in the `src` folder:
-    
-    $ tree -fl src
-
-    or 
-
-    $ cmd //c "tree /f /a src"    (for Windows users)
-
 The sources are compiled into the folders `mods/org.astro` and `mods/com.greetings` with the following commands:
 
-    $ ./multiModCompile.sh
+    $ mvn conpile
 
-Perform the below command to see both the modules created via the above script:
+Inspect both the modules created in the mods folder:
 
-    $ find mods -type f
     
 And we run the example with the following command:
     
-    $ ./run.sh
+    $ mvn install
+    $ mvn -f ./com.greetings/pom.xml exec:exec
+
+    or 
+
+    $ java --module-path mods --module com.greetings/com.greetings.Main
     
 Check the contents of all these script files (use the `cat` command or a text editor) to see what they are doing and why - interesting instructions and information in there.
 
