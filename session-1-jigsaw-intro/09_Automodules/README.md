@@ -69,41 +69,75 @@ As you can see in the `module-info.java`, we have added a dependency to JUnit us
 Hamcrest is a transitive dependency and as such does not have to be added separately.
 Also, since JUnit will have to access our classes to run tests, we export `com.greetings` to the JUnit module.
 
-
-**Note:** in case one of the below `.sh` script fails due to the `tree` command, please take a look at [Download and install the `tree` and `wget` command](../../README.md) section in the README.md file and apply the appropriate solution.
-
 You can see the dependency information by running the command:
 
-    $ ./deps.sh
+    $ jar -d --file=lib/junit-4.12.jar
+    $ jdeps -s lib/junit-4.12.jar
 
 Try to compile the modules using the below command:
 
-    $ ./compile.sh
+    $ javac --module-path lib \
+        -d mods/main/com.greetings \
+        src/com.greetings/module-info.java \
+        src/com.greetings/main/java/com/greetings/Greet.java \
+        src/com.greetings/main/java/com/greetings/Main.java
     
+    # For Windows
+    $ javac --module-path "mods;lib" \
+          -d mods/test/com.greetings \
+          src/com.greetings/module-info.java \
+          src/com.greetings/main/java/com/greetings/Greet.java \
+          src/com.greetings/test/java/com/greetings/GreetTest.java
+
+    # Linux or MacOs
+    javac --module-path mods:lib \
+          -d mods/test/com.greetings \
+          src/com.greetings/module-info.java \
+          src/com.greetings/main/java/com/greetings/Greet.java \
+          src/com.greetings/test/java/com/greetings/GreetTest.java
+
 And we run the example with the following command:
     
-    $ ./run.sh
+    *** Running from within the mods folder without arguments. *** 
     
-We should get the following output:
+    # For Windows
+    $ java --module-path "mods/main;lib" \
+         --module com.greetings/com.greetings.Main
 
-```
-     *** Running from within the mods folder without arguments. *** 
+    # For Linux or MacOs
+    java --module-path mods/main:lib \
+         --module com.greetings/com.greetings.Main
     
-    Hello World!
     
-     *** Running from within the mods folder with arguments. *** 
+    *** Running from within the mods folder with arguments. *** 
     
-    Hello Alice!
-    Hello Bob!
-    Hello Charlie!
+    # For Windows
+    $ java --module-path "mods/main;lib" \
+         --module com.greetings/com.greetings.Main \
+        Alice Bob Charlie
+
+    # For Linux or MacOs
+    $ java --module-path mods/main:lib \
+         --module com.greetings/com.greetings.Main \
+        Alice Bob Charlie
+
+
+    *** Running tests *** 
     
-     *** Running tests *** 
-    
-    JUnit version 4.12
-    .....
-    Time: 0.009
-    
-    OK (5 tests)
+    # For Windows
+    $ java --module-path "mods/main;lib" \
+         --add-modules com.greetings \
+         --patch-module com.greetings=mods/test/com.greetings \
+         --module junit/org.junit.runner.JUnitCore \
+        com.greetings.GreetTest
+
+    # For Linux or MacOs
+    java --module-path mods/main:lib \
+         --add-modules com.greetings \
+         --patch-module com.greetings=mods/test/com.greetings \
+         --module junit/org.junit.runner.JUnitCore \
+        com.greetings.GreetTest
+
 
 ```
     
