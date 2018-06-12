@@ -13,15 +13,27 @@ Perform the below commands to see the contents of the respective sources contain
     $ cat src/org.astro2/module-info.java
     $ cat src/org.astro2/org/astro/World.java
                 
-**Note:** in case one of the below `.sh` script fails due to the `tree` command, please take a look at [Download and install the `tree` and `wget` command](../../README.md) section in the README.md file and apply the appropriate solution.
-
 Try to compile the modules using the below command:
 
-    $ ./compile.sh
-    
+    $ javac -d mods/org.astro \
+        src/org.astro/module-info.java \
+        src/org.astro/org/astro/World.java
+
+	$ javac -d mods/org.astro2 \
+		src/org.astro2/module-info.java \
+		src/org.astro2/org/astro/World.java
+
+	$ javac --module-path mods \
+		-d mods/com.greetings \
+		src/com.greetings/module-info.java \
+		src/com.greetings/com/greetings/Main.java
+
+
 And we run the example with the following command:
     
-    $ ./run.sh
+    $ java --module-path mods \
+     	--module com.greetings/com.greetings.Main
+
     
 We should get a similar run-time error:
 
@@ -52,6 +64,5 @@ We should get a similar run-time error:
 
 ```
     
-Check the contents of this script file (use the `cat` command or a text editor) to see what they are doing and why - interesting instructions and information in there.
 
 See [../01_Greetings/README.md](../01_Greetings/README.md) to learn more about package and module naming conventions and how to avoid confusions between them.
