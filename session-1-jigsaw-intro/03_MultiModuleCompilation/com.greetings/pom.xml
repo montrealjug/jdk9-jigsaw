@@ -14,8 +14,33 @@
         <outputDirectory>../mods/com.greetings</outputDirectory>
         <!-- so can be built using module-source-path, last part must be the module name -->
         <sourceDirectory>src/main/java/com.greetings</sourceDirectory>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.6.0</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <workingDirectory>${project.basedir}</workingDirectory>
+                    <executable>java</executable>
+                    <longModulepath>false</longModulepath>
+                    <arguments>
+                        <argument>--module-path</argument>
+                        <modulepath/>
+                        <argument>--module</argument>
+                        <argument>com.greetings/com.greetings.Main</argument>
+                    </arguments>
+                </configuration>
+            </plugin>
+        </plugins>
     </build>
-    
+
     <dependencies>
         <dependency>
             <groupId>com.wordpress.londonjavacommunity.adoptopenjdk</groupId>
